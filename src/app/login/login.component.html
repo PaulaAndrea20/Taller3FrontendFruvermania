@@ -1,0 +1,56 @@
+<div class="container my-5">
+    <!-- Contenedor principal con margen superior de 5 unidades -->
+
+    <div class="m-auto w-50">
+        <!-- Div con clases "m-auto" (margen automático en ambos ejes) y "w-50" (ancho del 50%) -->
+
+        <div class="text-center">
+            <!-- Div con contenido centrado horizontalmente -->
+
+            <img src="assets/icons/login.png" alt="">
+            <!-- Imagen con ruta "assets/icons/login.png" que muestra un ícono de inicio de sesión -->
+        </div>
+
+        <div class="contenedor m-auto">
+            <!-- Div con clases "contenedor" y "m-auto" (margen automático en ambos ejes) -->
+
+            <form #loginForm="ngForm" (ngSubmit)="login()">
+                <!-- Formulario con una referencia local "loginForm" y un evento ngSubmit que llama a la función "login()" al enviar el formulario -->
+
+                <div class="col-auto">
+                    <!-- Div con clase "col-auto" (ancho automático) -->
+
+                    <label for="correo" class="form-label">Email</label>
+                    <!-- Etiqueta para el campo de correo -->
+
+                    <input type="email" class="form-control" id="correo" [(ngModel)]="credenciales.correo" name="correo"
+                        autocomplete="off" required>
+                    <!-- Entrada de texto para el correo con dos direcciones ngModel para enlazar el valor del input con la propiedad "credenciales.correo" en el componente, name para el nombre del campo en el formulario y atributos adicionales como autocomplete y required -->
+                </div>
+
+                <div class="col-auto">
+                    <!-- Div con clase "col-auto" (ancho automático) -->
+
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <!-- Etiqueta para el campo de contraseña -->
+
+                    <input type="password" class="form-control" id="contrasena" placeholder="contraseña" name="contrasena"
+                    [(ngModel)]="credenciales.contrasena" autocomplete="off" required>
+                    <!-- Entrada de texto para la contraseña con dos direcciones ngModel para enlazar el valor del input con la propiedad "credenciales.contrasena" en el componente, name para el nombre del campo en el formulario, atributos adicionales como placeholder, autocomplete y required -->
+                </div>
+
+                <div class="col-auto my-3 d-flex justify-content-center gap-3">
+                    <!-- Div con clase "col-auto" (ancho automático), margen superior de 3 unidades y estilo de flexbox para justificar el contenido al centro y agregar espacio entre elementos -->
+
+                    <button type="submit" class="button btn btn-success mb-3" [disabled]="!loginForm.form.valid">
+                    <!-- Botón con tipo "submit" para enviar el formulario, con clases de Bootstrap para el estilo de botón, un atributo [disabled] que desactiva el botón cuando el formulario no es válido -->
+
+                        Iniciar sesión
+                        <!-- Texto del botón -->
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,48 @@
+<!-- Contenedor principal con margen superior de 5 unidades -->
+
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-sm-4">
+            <!-- Columna de tamaño 4 en dispositivos pequeños -->
+            <img alt="Imagen del producto" class="img-fluid" src="assets/imagenes/{{producto.nombre | lowercase}}.jpg"
+                width="500" height="300">
+        </div>
+        <div class="col-sm-6">
+            <!-- Título con el nombre del producto obtenido del objeto producto -->
+            <h3>{{producto.nombre}}</h3>
+            <!-- Párrafo con el detalle del producto obtenido del objeto producto -->
+            <p>{{producto.detalle}}</p>
+
+            <p>Precio: {{producto.precio}} $</p>
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <button type="button" [routerLink]="['/productos']" class="rounded-pill mybtn">Seguir
+                        comprando</button>
+                </div>
+            </div>
+            <div class="row g-3 my-3">
+                <div class="col-6 text-center">
+                    <h6 class="p-0">Comparte</h6>
+                    <h6 class="p-0">este producto</h6>
+                </div>
+
+                <div class="col-6 d-flex gap-3">
+                    <a>
+                        <!-- Imagen del icono de Facebook con atributos de ancho y alto -->
+                        <img src="assets/icons/facebook.png" alt="facebook" width="40" height="40">
+                    </a>
+                    <a>
+                        <!-- Imagen del icono de Instagram con atributos de ancho y alto -->
+                        <img src="assets/icons/email.png" alt="instagram" width="40" height="40">
+                    </a>
+                    <a>
+                        <!-- Imagen del icono de Twitter con atributos de ancho y alto -->
+
+                        <img src="assets/icons/twitter.png" alt="twitter" width="40" height="40">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

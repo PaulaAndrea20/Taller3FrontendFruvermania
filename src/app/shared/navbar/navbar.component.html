@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <!-- Barra de navegación con clases de Bootstrap para el estilo -->
+
+    <div class="container-fluid">
+        <!-- Contenedor fluido que ocupa todo el ancho -->
+
+        <img [routerLink]="['/productos']" src="assets/imagenes/logonew.png" alt="logo"
+            class="d-inline-block align-text-top logo" style="margin-right: 5rem !important;">
+        <!-- Imagen con enlace que redirige a '/productos' cuando se hace clic. Tiene una clase "logo" y un margen derecho de 5rem -->
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Botón para el despliegue del menú en dispositivos móviles -->
+
+            <span class="navbar-toggler-icon"></span>
+            <!-- Icono del botón desplegable -->
+        </button>
+
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <!-- Div que contiene el contenido colapsable de la barra de navegación -->
+
+            <form class="d-flex col-sm-12 col-lg-6">
+                <!-- Formulario con estilo de flexbox, que ocupa 12 columnas en dispositivos pequeños y 6 columnas en dispositivos grandes -->
+
+                <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
+                <!-- Campo de búsqueda con clase de Bootstrap para el estilo -->
+
+                <a type="submit">
+
+                    <img src="assets/icons/lupa.png" alt="" class="buscar">
+                    <!-- Imagen con ícono de lupa para buscar -->
+                </a>
+            </form>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Lista no ordenada con clases de Bootstrap para el estilo -->
+
+                <li><a class="nav-link linktxt " [routerLink]="['/productos/lista']">Lista de
+                        productos</a></li>
+                <!-- Elemento de lista con enlace que redirige a '/productos/lista' cuando se hace clic -->
+
+                <li><a class="nav-link linktxt" *ngIf="cliente.rol == 'admin'"
+                        [routerLink]="['/productos/agregar']">Agregar
+                        producto</a></li>
+                <!-- Elemento de lista con enlace que redirige a '/productos/agregar' cuando se hace clic, pero solo se muestra si el valor de cliente.rol es 'admin' -->
+
+                <li><a class="nav-link linktxt" *ngIf="cliente.rol" [routerLink]="['/compras']">
+                        Compras</a></li>
+                <!-- Elemento de lista con enlace que redirige a '/compras' cuando se hace clic, pero solo se muestra si el valor de cliente.rol está definido (es verdadero) -->
+
+                <li class="nav-item">
+                    <!-- Elemento de lista con clase "nav-item" -->
+
+                    <a class="nav-link linktxt" [routerLink]="['login']" *ngIf="!auth.isLogged()">
+                        Iniciar sesion
+                    </a>
+                    <!-- Enlace con texto "Iniciar sesión" que redirige a '/login' cuando se hace clic, pero solo se muestra si el usuario no está autenticado (!auth.isLogged()) -->
+
+                    <a class="nav-link linktxt" (click)="auth.logout()" *ngIf="auth.isLogged()">
+                        Cerrar sesion
+                    </a>
+                    <!-- Enlace con texto "Cerrar sesión" que llama a la función "auth.logout()" cuando se hace clic, pero solo se muestra si el usuario está autenticado (auth.isLogged()) -->
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</nav>

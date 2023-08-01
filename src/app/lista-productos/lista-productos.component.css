@@ -1,0 +1,39 @@
+/* Estilos para la clase .producto */
+.producto{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos para la clase .preciotxt */
+
+.preciotxt{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(68, 68, 68);
+}
+/* Estilos para la clase .txtFruta */
+.txtFruta{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(38, 87, 5);
+}
+/* Estilos para la clase .formulario input */
+
+.formulario input{
+    border: 1px solid rgb(216, 113, 113);
+}
+
+/* Estilos para la clase .formulario button */
+.formulario button{
+    background-color: rgb(216, 113, 113);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+/* Estilos para la clase .banner */
+.banner{
+    width: 100%;
+    object-fit: cover;
+    height: 400px;
+}

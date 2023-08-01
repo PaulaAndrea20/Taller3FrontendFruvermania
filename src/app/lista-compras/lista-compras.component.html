@@ -1,0 +1,108 @@
+<div class="container my-4">
+    <!-- Contenedor principal con margen superior de 4 unidades -->
+
+    <div class="row my-2">
+        <!-- Inicio de una nueva fila con margen superior de 2 unidades -->
+        
+        <h4 *ngIf="cliente.rol == 'admin'">Administrador</h4>
+        <!-- Si el valor de cliente.rol es 'admin', muestra el texto "Administrador" -->
+        
+        <h4 *ngIf="cliente.rol == 'cliente'">Cliente</h4>
+        <!-- Si el valor de cliente.rol es 'cliente', muestra el texto "Cliente" -->
+    </div>
+
+    <div class="row">
+        <!-- Inicio de una nueva fila -->
+
+        <div class="table-responsive">
+            <!-- Div con clase "table-responsive" para hacer que la tabla sea receptiva en dispositivos pequeños -->
+
+            <table class="table table-striped table-hover">
+                <!-- Tabla con clases de Bootstrap para estilo -->
+
+                <thead>
+                    <!-- Encabezado de la tabla -->
+
+                    <tr class="text-center">
+                        <!-- Fila de encabezado con contenido centrado horizontalmente -->
+
+                        <th class="col-1">ID</th>
+                        <!-- Columna de tamaño 1 -->
+                        
+                        <th class="col-2">Nombre</th>
+                        
+
+                        <th class="col-2">Producto</th>
+                       
+
+                        <th class="col-1">Cantidad</th>
+                        
+
+                        <th class="col-1">Fecha</th>
+                        
+
+                        <th class="col-2">Estado</th>
+                        <!-- Columna de tamaño 2 -->
+
+
+                        <th class="col-2" *ngIf="cliente.rol == 'admin'">Acciones</th>
+                        <!-- Columna de tamaño 2 que solo se muestra si el valor de cliente.rol es 'admin' -->
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <!-- Cuerpo de la tabla con los datos de compras -->
+
+                    <tr *ngFor="let compra of tmpCompras | async">
+                        <!-- Inicio de una fila que se repite para cada objeto compra en tmpCompras -->
+
+                        <td class="col-1 text-center">{{compra.idCompra}}</td>
+                        <!-- Columna de tamaño 1 con el ID de la compra -->
+
+                        <td class="col-2 text-center">{{compra.nombreCliente}}</td>
+                        <!-- Columna de tamaño 2 con el nombre del cliente de la compra -->
+
+                        <td class="col-2 text-center">{{compra.nombreProducto}}</td>
+                        <!-- Columna de tamaño 2 con el nombre del producto de la compra -->
+
+                        <td class="col-1 text-center">{{compra.cantidad}}</td>
+                        <!-- Columna de tamaño 1 con la cantidad de productos comprados -->
+
+                        <td class="col-1 text-center">{{compra.fechaSolicitud | date:'dd/MM/yyyy'}}</td>
+                        <!-- Columna de tamaño 1 con la fecha de solicitud de la compra en formato 'dd/MM/yyyy' -->
+
+                        <td class="col-2 text-center">
+                            <!-- Columna de tamaño 2 para mostrar el estado de la compra -->
+
+                            <span *ngIf="compra.estado == '0'" class="badge bg-warning">Pendiente</span>
+                            <!-- Si el estado de la compra es '0', muestra un badge amarillo con el texto "Pendiente" -->
+                            
+                            <span *ngIf="compra.estado == '1'" class="badge bg-success">Aceptado</span>
+                            <!-- Si el estado de la compra es '1', muestra un badge verde con el texto "Aceptado" -->
+                            
+                            <span *ngIf="compra.estado == '-1'" class="badge bg-danger">Rechazado</span>
+                            <!-- Si el estado de la compra es '-1', muestra un badge rojo con el texto "Rechazado" -->
+                        </td>
+
+
+                        <td class="col-2 text-center opcion"  *ngIf="cliente.rol == 'admin' && compra.estado == '0'">
+                            <!-- Columna de tamaño 2 para mostrar acciones (solo si el cliente es 'admin' y el estado de la compra es '0') -->
+
+                            <button type="button" class="btn btn-primary" (click)="aprobar(compra)">
+                            Aceptar
+                            </button>
+                            <!-- Botón con clase de Bootstrap para aprobar la compra -->
+
+                            <button type="button" class="btn btn-danger" (click)="rechazar(compra)">
+                                <i class="bi bi-x"></i> X
+
+                            </button>
+                            <!-- Botón con clase de Bootstrap para rechazar la compra -->
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="container">
+    <!-- Botón para agregar un nuevo producto -->
+    <button type="button" class="btn btn-success my-4" data-bs-toggle="modal" data-bs-target="#modalEditarProducto"
+        (click)="onAgregarProducto()">
+        agregar producto
+    </button>
+
+    <!-- Tabla para mostrar la lista de productos -->
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th class="col-1">ID</th>
+                        <th class="col-2">Nombre</th>
+                        <th class="col-4">Detalle</th>
+                        <th class="col-2">Precio</th>
+                        <th class="col-2">Acciones</th>
+                    </tr>
+                </thead>
+                <!-- Filas de la tabla para mostrar cada producto -->
+
+                <tbody>
+                    <!-- Se utiliza *ngFor para iterar sobre cada elemento del array productos    -->
+                    <tr *ngFor="let producto of productos | async">
+                        <td class="col-1 text-center">{{producto.idProducto}}</td>
+                        <td class="col-2 text-center">{{producto.nombre}}</td>
+                        <td class="col-4">{{producto.detalle}}</td>
+                        <td class="col-2 text-center">{{producto.precio}}</td>
+
+                        <!-- Botones para editar y eliminar cada producto -->
+                        <td class="col-2 text-center">
+                            <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"
+                                data-bs-target="#modalEditarProducto" (click)="onEditarProducto(producto)">
+                                editar
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="onEliminarProducto(producto)">
+                                eliminar
+                            </button>
+                        </td>
+                    </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal para editar producto -->
+<div class="modal fade" id="modalEditarProducto" tabindex="-1" aria-labelledby="modalEditarProductoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditarProductoLabel">Editar producto</h5>
+            </div>
+            <!-- Formulario dentro del modal para editar producto -->
+            <div class="container">
+                <form (ngSubmit)="onSubmit()" #productoForm="ngForm">
+                    <fieldset class="form-group">
+                        <div class="col-sm-12">
+                            <label class="control-label" for="nombre">Nombre</label>
+                            <input type="text" class="form-control" required [(ngModel)]="producto.nombre"
+                                name="nombre">
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="col-sm-12">
+                            <label class="control-label" for="email">Detalle</label>
+                            <textarea class="form-control" required [(ngModel)]="producto.detalle" name="detalle"
+                                rows="5"></textarea>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <div class="col-sm-12">
+                            <label class="control-label" for="telefono">Precio</label>
+                            <input type="text" class="form-control" required [(ngModel)]="producto.precio"
+                                name="precio">
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group my-3">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success" data-bs-dismiss="modal"
+                                [disabled]="!productoForm.form.valid">Guardar</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

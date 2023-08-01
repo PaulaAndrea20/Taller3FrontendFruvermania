@@ -1,0 +1,22 @@
+.linktxt{
+    color: #299907 !important;
+    text-decoration: none;
+    font-size: 15px;
+
+}
+
+.navbar{
+    box-shadow: 0 0 30px #000000;
+}
+
+.logo{
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.buscar{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
